@@ -1,0 +1,26 @@
+# Python
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.sqlite3
+
+# Environment
+.env
+.env.local
+
+# Django
+media/
+staticfiles/
+
+# Node
+node_modules/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

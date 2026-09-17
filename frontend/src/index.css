@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink text-parchment font-body;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-wide;
+  }
+}
+
+@layer components {
+  /* A thin gold hairline used to divide sections, instead of a generic card shadow */
+  .rule-gold {
+    @apply border-t border-gold/40;
+  }
+
+  /* Framed content block — used instead of rounded "SaaS cards" */
+  .frame {
+    @apply border border-gold/30 bg-ink-soft/60;
+  }
+
+  .btn-primary {
+    @apply inline-block border border-gold px-7 py-3 font-display text-sm tracking-wider2
+           text-gold transition-colors duration-200 hover:bg-gold hover:text-ink;
+  }
+
+  .btn-ghost {
+    @apply inline-block border border-parchment/40 px-7 py-3 font-display text-sm tracking-wider2
+           text-parchment transition-colors duration-200 hover:border-parchment hover:bg-parchment/10;
+  }
+
+  .eyebrow {
+    @apply font-display text-xs tracking-wider2 text-gold;
+  }
+}
