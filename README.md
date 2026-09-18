@@ -4,6 +4,8 @@ A simplified, beginner-friendly rebuild of your project. Same idea (a real
 estate site for the Mikaelson family business, est. 1001 AD, gothic look),
 but stripped down to what a fresher can actually read top to bottom:
 
+![Mikaelson's Legacy - Home page](docs/home.png)
+
 | | Original | This version |
 |---|---|---|
 | Backend apps | 8 apps (users, agents, leads, properties, favorites, core, insights, tours) | **1 app** (`listings`) |
@@ -152,3 +154,13 @@ time instead of all at once:
 4. A blog/insights section (one more small app, same pattern as `listings`)
 
 Each of those is basically "copy the `listings` app pattern for a new model."
+
+---
+
+## Screenshots
+
+| Home | Properties | Property Detail |
+|---|---|---|
+| ![Home](docs/home.png) | ![Properties](docs/properties.png) | ![Detail](docs/detail.png) |
+
+---
