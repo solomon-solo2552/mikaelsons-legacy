@@ -12,16 +12,20 @@ export default function Contact() {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    if (status === "error") setStatus("idle"); // reset error state on change
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
     try {
-      // The backend accepts a property PK, not a slug — in this simple
-      // version we just send the message along; feel free to look the
-      // property up first if you want to link the inquiry to it.
-      await sendInquiry(form);
+      const payload = {
+        ...form,
+        // Send the slug if the user arrived from a property page.
+        // Backend will resolve it to the actual Property.
+        ...(propertySlug ? { property_slug: propertySlug } : {}),
+      };
+      await sendInquiry(payload);
       setStatus("sent");
       setForm({ name: "", email: "", phone: "", message: "" });
     } catch (err) {
@@ -29,6 +33,46 @@ export default function Contact() {
     }
   };
 
+  const handleReset = () => {
+    setStatus("idle");
+  };
+
+  // ----- SUCCESS STATE -----
+  if (status === "sent") {
+    return (
+      <div className="mx-auto max-w-2xl px-6 py-24 text-center">
+        <OrnamentDivider className="mx-auto" />
+
+        <span className="mt-8 block eyebrow">RECEIVED</span>
+        <h1 className="mt-4 font-display text-4xl text-gold">
+          Your Message Has Been Delivered
+        </h1>
+
+        <p className="mt-6 font-body text-lg leading-relaxed text-parchment/70">
+          Thank you. Someone from the family will respond within one business
+          day{propertySlug && (
+            <>
+              {" "}
+              regarding <span className="text-gold">{propertySlug}</span>
+            </>
+          )}.
+        </p>
+
+        <OrnamentDivider className="mx-auto mt-8" />
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="/properties" className="btn-primary">
+            Browse More Properties
+          </a>
+          <button onClick={handleReset} className="btn-ghost">
+            Send Another Message
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ----- FORM STATE (idle / sending / error) -----
   return (
     <div className="mx-auto max-w-2xl px-6 py-20">
       <div className="mb-10 flex flex-col items-center gap-3 text-center">
@@ -53,6 +97,7 @@ export default function Contact() {
             className="w-full border border-gold/30 bg-transparent px-4 py-2 font-body text-parchment focus:border-gold focus:outline-none"
           />
         </div>
+
         <div>
           <label className="mb-1 block font-display text-xs tracking-wider2 text-gold">EMAIL</label>
           <input
@@ -64,8 +109,11 @@ export default function Contact() {
             className="w-full border border-gold/30 bg-transparent px-4 py-2 font-body text-parchment focus:border-gold focus:outline-none"
           />
         </div>
+
         <div>
-          <label className="mb-1 block font-display text-xs tracking-wider2 text-gold">PHONE (OPTIONAL)</label>
+          <label className="mb-1 block font-display text-xs tracking-wider2 text-gold">
+            PHONE (OPTIONAL)
+          </label>
           <input
             name="phone"
             value={form.phone}
@@ -73,6 +121,7 @@ export default function Contact() {
             className="w-full border border-gold/30 bg-transparent px-4 py-2 font-body text-parchment focus:border-gold focus:outline-none"
           />
         </div>
+
         <div>
           <label className="mb-1 block font-display text-xs tracking-wider2 text-gold">MESSAGE</label>
           <textarea
@@ -89,11 +138,6 @@ export default function Contact() {
           {status === "sending" ? "Sending…" : "Send Message"}
         </button>
 
-        {status === "sent" && (
-          <p className="text-center font-body text-sm text-gold">
-            Message received. Someone from the family will be in touch.
-          </p>
-        )}
         {status === "error" && (
           <p className="text-center font-body text-sm text-burgundy-light">
             Something went wrong — check that the Django server is running on
