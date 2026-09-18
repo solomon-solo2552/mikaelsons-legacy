@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProperty } from "../api/client";
 import OrnamentDivider from "../components/OrnamentDivider";
+import PageTransition from "../components/PageTransition";
 
 const PLACEHOLDER =
   "data:image/svg+xml;utf8," +
@@ -59,6 +60,7 @@ export default function PropertyDetail() {
   ];
 
   return (
+    <PageTransition>
     <div className="mx-auto max-w-5xl px-6 py-16">
       <Link to="/properties" className="font-display text-xs tracking-wider2 text-gold hover:underline">
         &larr; BACK TO PROPERTIES
@@ -103,5 +105,6 @@ export default function PropertyDetail() {
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 }

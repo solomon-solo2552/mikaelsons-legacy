@@ -39,6 +39,15 @@ export default {
         "stone-gradient":
           "radial-gradient(circle at 20% 20%, #241B16 0%, #120E0C 55%, #0A0807 100%)",
       },
+      keyframes: {
+        pageIn: {
+          "0%": { opacity: "0", transform: "translateY(8px"},
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        pageIn: "pageIn 400ms ease-out",
+      },
     },
   },
   plugins: [],

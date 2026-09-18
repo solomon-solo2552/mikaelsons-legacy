@@ -1,4 +1,5 @@
 import OrnamentDivider from "../components/OrnamentDivider";
+import PageTransition from "../components/PageTransition"; 
 
 const TIMELINE = [
   { year: "1001", text: "The first Mikaelson deed is recorded — a single stone hall traded for grain and a promise." },
@@ -9,6 +10,7 @@ const TIMELINE = [
 
 export default function About() {
   return (
+    <PageTransition>
     <div className="mx-auto max-w-4xl px-6 py-20">
       <div className="mb-14 flex flex-col items-center gap-3 text-center">
         <span className="eyebrow">OUR STORY</span>
@@ -44,5 +46,6 @@ export default function About() {
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 }

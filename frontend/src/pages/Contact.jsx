@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { sendInquiry } from "../api/client";
 import OrnamentDivider from "../components/OrnamentDivider";
+import PageTransition from "../components/PageTransition";
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
@@ -40,6 +41,7 @@ export default function Contact() {
   // ----- SUCCESS STATE -----
   if (status === "sent") {
     return (
+      <PageTransition>
       <div className="mx-auto max-w-2xl px-6 py-24 text-center">
         <OrnamentDivider className="mx-auto" />
 
@@ -69,11 +71,13 @@ export default function Contact() {
           </button>
         </div>
       </div>
+      </PageTransition>
     );
   }
 
   // ----- FORM STATE (idle / sending / error) -----
   return (
+    <PageTransition>
     <div className="mx-auto max-w-2xl px-6 py-20">
       <div className="mb-10 flex flex-col items-center gap-3 text-center">
         <span className="eyebrow">GET IN TOUCH</span>
@@ -146,5 +150,6 @@ export default function Contact() {
         )}
       </form>
     </div>
+    </PageTransition>
   );
 }

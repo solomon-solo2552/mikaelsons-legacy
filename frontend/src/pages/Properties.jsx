@@ -3,6 +3,7 @@ import { getProperties } from "../api/client";
 import PropertyCard from "../components/PropertyCard";
 import OrnamentDivider from "../components/OrnamentDivider";
 import PropertyCardSkeleton from "../components/PropertyCardSkeleton";
+import PageTransition from "../components/PageTransition";
 
 const TYPES = [
   { value: "", label: "All Types" },
@@ -38,6 +39,7 @@ export default function Properties() {
   }, [search, type]);
 
   return (
+    <PageTransition>
     <div className="mx-auto max-w-6xl px-6 py-16">
       <div className="mb-10 flex flex-col items-center gap-3 text-center">
         <span className="eyebrow">THE PORTFOLIO</span>
@@ -101,5 +103,6 @@ export default function Properties() {
         ))}
       </div>
     </div>
+    </PageTransition>
   );
 }

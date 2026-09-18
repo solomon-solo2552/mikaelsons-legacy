@@ -4,6 +4,7 @@ import { getProperties } from "../api/client";
 import PropertyCard from "../components/PropertyCard";
 import OrnamentDivider from "../components/OrnamentDivider";
 import PropertyCardSkeleton from "../components/PropertyCardSkeleton";
+import PageTransition from "../components/PageTransition";
 
 export default function Home() {
   const [featured, setFeatured] = useState([]);
@@ -20,6 +21,7 @@ export default function Home() {
   }, []);
 
   return (
+    <PageTransition>
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden bg-stone-gradient">
@@ -110,5 +112,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </PageTransition>
   );
 }
