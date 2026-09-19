@@ -47,6 +47,7 @@ const links = [
   { to: "/", label: "Home" },
   { to: "/properties", label: "Properties" },
   { to: "/about", label: "Our Story" },
+  { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ];
 
