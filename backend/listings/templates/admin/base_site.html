@@ -1,0 +1,27 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block title %}{{ title }} | Mikaelson's Legacy — Estate Operations{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="icon" type="image/svg+xml" href="{% static 'admin/img/favicon.svg' %}">
+  <link rel="stylesheet" href="{% static 'admin/css/mikaelson_admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+  <h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+      MIKAELSON'S <span style="color: #D8BC7A;">LEGACY</span>
+    </a>
+    {% if m_estate_stats %}
+      <span class="m-estate-stats">
+        {{ m_estate_stats.properties }} propert{{ m_estate_stats.properties|pluralize:"y,ies" }}
+        &middot;
+        {{ m_estate_stats.inquiries }} inquir{{ m_estate_stats.inquiries|pluralize:"y,ies" }}
+      </span>
+    {% endif %}
+  </h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

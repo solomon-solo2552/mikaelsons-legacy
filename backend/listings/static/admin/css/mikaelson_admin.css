@@ -1,0 +1,168 @@
+/* Mikaelson's Legacy — Django admin theme
+   Matches the public site's gold/parchment/ink palette. */
+
+:root {
+  --m-gold: #B8933F;
+  --m-gold-dark: #8C6C2B;
+  --m-ink: #120E0C;
+  --m-ink-light: #1E1713;
+  --m-ink-soft: #2A211B;
+  --m-parchment: #EDE6D6;
+}
+
+/* ---------- HEADER ---------- */
+#header {
+  background: var(--m-ink);
+  color: var(--m-gold);
+  border-bottom: 1px solid var(--m-gold-dark);
+  padding: 14px 24px;
+}
+
+#branding h1,
+#branding h1 a:link,
+#branding h1 a:visited {
+  color: var(--m-gold);
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+#branding h1 a:hover {
+  color: var(--m-parchment);
+}
+
+/* Estate stats badge next to the title */
+.m-estate-stats {
+  display: inline-block;
+  margin-left: 16px;
+  padding: 3px 10px;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--m-parchment);
+  background: var(--m-ink-soft);
+  border: 1px solid var(--m-gold-dark);
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+#user-tools {
+  color: var(--m-parchment);
+}
+
+#user-tools a {
+  color: var(--m-gold);
+}
+
+#user-tools a:hover {
+  color: var(--m-parchment);
+}
+
+/* ---------- NAV SIDEBAR ---------- */
+.module h2,
+.module caption,
+.inline-group h2 {
+  background: var(--m-gold-dark);
+  color: var(--m-ink);
+  font-family: Georgia, serif;
+  letter-spacing: 0.05em;
+}
+
+div.breadcrumbs {
+  background: var(--m-ink-light);
+  color: var(--m-parchment);
+  border-bottom: 1px solid var(--m-gold-dark);
+}
+
+div.breadcrumbs a {
+  color: var(--m-gold);
+}
+
+/* ---------- BUTTONS ---------- */
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+  background: var(--m-gold-dark);
+  color: var(--m-parchment);
+  border: 1px solid var(--m-gold);
+  font-family: Georgia, serif;
+  letter-spacing: 0.05em;
+}
+
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+.submit-row input:hover,
+a.button:hover {
+  background: var(--m-gold);
+  color: var(--m-ink);
+}
+
+.button.default,
+input[type=submit].default,
+.submit-row input.default {
+  background: var(--m-gold);
+  color: var(--m-ink);
+}
+
+.button.default:hover,
+input[type=submit].default:hover,
+.submit-row input.default:hover {
+  background: var(--m-parchment);
+}
+
+/* ---------- LINKS ---------- */
+a:link, a:visited {
+  color: var(--m-gold-dark);
+}
+
+a:hover {
+  color: var(--m-gold);
+}
+
+/* ---------- TABLES ---------- */
+#changelist table thead th {
+  background: var(--m-ink-soft);
+  color: var(--m-parchment);
+  font-family: Georgia, serif;
+  letter-spacing: 0.04em;
+}
+
+#changelist table tbody tr:nth-child(odd) {
+  background: #faf7f0;
+}
+
+#changelist table tbody tr:hover {
+  background: #f0e9d8;
+}
+
+/* ---------- LOGIN PAGE ---------- */
+.login {
+  background: var(--m-ink);
+}
+
+.login #container {
+  background: var(--m-ink-light);
+  border: 1px solid var(--m-gold-dark);
+  border-radius: 2px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.login #header {
+  background: transparent;
+  border-bottom: 1px solid var(--m-gold-dark);
+}
+
+.login .form-row label {
+  color: var(--m-parchment);
+  font-family: Georgia, serif;
+  letter-spacing: 0.05em;
+}
+
+.login .submit-row input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
