@@ -3,11 +3,15 @@
 
 :root {
   --m-gold: #B8933F;
+  --m-gold-light: #D8BC7A;
   --m-gold-dark: #8C6C2B;
   --m-ink: #120E0C;
   --m-ink-light: #1E1713;
   --m-ink-soft: #2A211B;
   --m-parchment: #EDE6D6;
+  --m-parchment-dark: #DCD0B4;
+  --m-text-on-light: #1A1410;    /* dark text for light backgrounds */
+  --m-text-on-dark: #EDE6D6;     /* parchment text for dark backgrounds */
 }
 
 /* ---------- HEADER ---------- */
@@ -31,7 +35,6 @@
   color: var(--m-parchment);
 }
 
-/* Estate stats badge next to the title */
 .m-estate-stats {
   display: inline-block;
   margin-left: 16px;
@@ -58,16 +61,17 @@
   color: var(--m-parchment);
 }
 
-/* ---------- NAV SIDEBAR ---------- */
+/* ---------- MODULE HEADERS (gold bar) ---------- */
 .module h2,
 .module caption,
 .inline-group h2 {
   background: var(--m-gold-dark);
-  color: var(--m-ink);
+  color: var(--m-ink);              /* dark text on gold bar */
   font-family: Georgia, serif;
   letter-spacing: 0.05em;
 }
 
+/* ---------- BREADCRUMBS ---------- */
 div.breadcrumbs {
   background: var(--m-ink-light);
   color: var(--m-parchment);
@@ -76,6 +80,10 @@ div.breadcrumbs {
 
 div.breadcrumbs a {
   color: var(--m-gold);
+}
+
+div.breadcrumbs a:hover {
+  color: var(--m-parchment);
 }
 
 /* ---------- BUTTONS ---------- */
@@ -111,9 +119,10 @@ input[type=submit].default,
 input[type=submit].default:hover,
 .submit-row input.default:hover {
   background: var(--m-parchment);
+  color: var(--m-ink);
 }
 
-/* ---------- LINKS ---------- */
+/* ---------- GLOBAL LINKS ---------- */
 a:link, a:visited {
   color: var(--m-gold-dark);
 }
@@ -122,7 +131,7 @@ a:hover {
   color: var(--m-gold);
 }
 
-/* ---------- TABLES ---------- */
+/* ---------- CHANGELIST TABLE (the big fix) ---------- */
 #changelist table thead th {
   background: var(--m-ink-soft);
   color: var(--m-parchment);
@@ -130,12 +139,137 @@ a:hover {
   letter-spacing: 0.04em;
 }
 
-#changelist table tbody tr:nth-child(odd) {
-  background: #faf7f0;
+#changelist table thead th a,
+#changelist table thead th a:link,
+#changelist table thead th a:visited {
+  color: var(--m-parchment);
 }
 
-#changelist table tbody tr:hover {
-  background: #f0e9d8;
+#changelist table thead th a:hover {
+  color: var(--m-gold-light);
+}
+
+/* Body rows — CRITICAL: dark text on light rows, light text on dark rows */
+
+/* Odd rows — light background → DARK text */
+#changelist table tbody tr:nth-child(odd),
+#changelist table tbody tr:nth-child(odd) td,
+#changelist table tbody tr:nth-child(odd) th {
+  background: #f5efde;
+  color: var(--m-text-on-light);
+}
+
+/* Even rows — dark background → LIGHT text */
+#changelist table tbody tr:nth-child(even),
+#changelist table tbody tr:nth-child(even) td,
+#changelist table tbody tr:nth-child(even) th {
+  background: var(--m-ink-light);
+  color: var(--m-text-on-dark);
+}
+
+/* Links inside light rows */
+#changelist table tbody tr:nth-child(odd) a,
+#changelist table tbody tr:nth-child(odd) a:link,
+#changelist table tbody tr:nth-child(odd) a:visited {
+  color: var(--m-gold-dark);
+}
+
+#changelist table tbody tr:nth-child(odd) a:hover {
+  color: var(--m-gold);
+}
+
+/* Links inside dark rows */
+#changelist table tbody tr:nth-child(even) a,
+#changelist table tbody tr:nth-child(even) a:link,
+#changelist table tbody tr:nth-child(even) a:visited {
+  color: var(--m-gold-light);
+}
+
+#changelist table tbody tr:nth-child(even) a:hover {
+  color: var(--m-parchment);
+}
+
+/* Row hover — highlight regardless of light/dark */
+#changelist table tbody tr:hover td,
+#changelist table tbody tr:hover th {
+  background: rgba(184, 147, 63, 0.15);
+}
+
+/* Selected row (checkboxes) */
+#changelist table tbody tr.selected td,
+#changelist table tbody tr.selected th {
+  background: rgba(184, 147, 63, 0.25);
+  color: var(--m-text-on-dark);
+}
+
+/* ---------- FORM LABELS & FIELDS ---------- */
+.form-row label,
+label {
+  color: var(--m-parchment);
+}
+
+.form-row input[type=text],
+.form-row input[type=email],
+.form-row input[type=url],
+.form-row input[type=number],
+.form-row input[type=password],
+.form-row textarea,
+.form-row select,
+.vTextField,
+.vLargeTextField {
+  background: #ffffff;
+  color: var(--m-text-on-light);
+  border: 1px solid var(--m-gold-dark);
+}
+
+/* ---------- SIDEBAR FILTERS ---------- */
+#changelist-filter h2 {
+  background: var(--m-gold-dark);
+  color: var(--m-ink);
+  font-family: Georgia, serif;
+  letter-spacing: 0.05em;
+}
+
+#changelist-filter h3 {
+  color: var(--m-gold);
+}
+
+#changelist-filter li.selected a {
+  color: var(--m-gold-light);
+  font-weight: 600;
+}
+
+/* ---------- ACTION COUNTER / TEXT IN TABLE HEADER ---------- */
+.actions {
+  background: var(--m-ink-soft);
+  color: var(--m-parchment);
+}
+
+.actions select,
+.actions label {
+  color: var(--m-parchment);
+}
+
+.action-counter {
+  color: var(--m-gold);
+}
+
+/* ---------- PAGINATION ---------- */
+.paginator {
+  background: var(--m-ink-soft);
+  color: var(--m-parchment);
+  border-top: 1px solid var(--m-gold-dark);
+}
+
+.paginator a,
+.paginator a:link,
+.paginator a:visited {
+  color: var(--m-gold);
+}
+
+.paginator .this-page {
+  color: var(--m-parchment);
+  font-weight: 600;
 }
 
 /* ---------- LOGIN PAGE ---------- */
@@ -165,4 +299,9 @@ a:hover {
   width: 100%;
   padding: 10px;
   font-size: 14px;
+}
+
+/* ---------- MESSAGES (success / warning / error) ---------- */
+.messagelist li {
+  color: var(--m-text-on-light);   /* messages usually have light backgrounds */
 }
