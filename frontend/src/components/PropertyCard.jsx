@@ -29,9 +29,23 @@ export default function PropertyCard({ property }) {
           alt={property.title}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
+        {/* Top-left: FEATURED badge (existing) */}
         {property.is_featured && (
           <span className="absolute left-3 top-3 border border-gold bg-ink/80 px-2 py-1 font-display text-[10px] tracking-wider2 text-gold">
             FEATURED
+          </span>
+        )}
+
+        {/* Top-right: Status badge (only if not available) */}
+        {property.status && property.status !== "available" && (
+          <span
+            className={`absolute right-3 top-3 border px-2 py-1 font-display text-[10px] tracking-wider2 ${
+              property.status === "sold"
+              ? "border-burgundy bg-burgundy/80 text-parchment"
+              : "border-gold bg-ink/80 text-gold"
+            }`}
+          >
+            {property.status === "sold" ? "SOLD" : "UNDER OFFER"}
           </span>
         )}
       </div>

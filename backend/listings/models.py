@@ -12,10 +12,20 @@ class Property(models.Model):
         COTTAGE = "cottage", "Cottage"
         LAND = "land", "Land"
 
+    class Status(models.TextChoices):
+        AVAILABLE = "available", "Available"
+        UNDER_OFFER = "under_offer", "Under Offer"
+        SOLD = "sold", "Sold"
+
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True, blank=True)
     property_type = models.CharField(
         max_length=20, choices=PropertyType.choices, default=PropertyType.ESTATE
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.AVAILABLE,
     )
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=12, decimal_places=2)

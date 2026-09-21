@@ -74,7 +74,20 @@ export default function PropertyDetail() {
         />
 
         <div className="p-8">
-          <span className="eyebrow">{property.property_type}</span>
+          <div className="flex items-center gap-3">
+            <span className="eyebrow">{property.property_type}</span>
+            {property.status && property.status !== "available" && (
+              <span
+                className={`boredr px-2 py-0.5 font-display text-[10px] tracking-wider2 ${
+                  property.status === "sold"
+                  ? "boredr-burgundy bg-burgundy/20 text-burgundy-light"
+                  : "border-gold bg-gold/10 text-gold"
+                }`}
+              >
+                {property.status === "sold" ? "SOLD" : "UNDER OFFER"}
+              </span>
+            )}
+          </div>
           <h1 className="mt-2 font-display text-4xl text-parchment">{property.title}</h1>
           <p className="mt-1 font-body text-parchment/60">{property.location}</p>
 
