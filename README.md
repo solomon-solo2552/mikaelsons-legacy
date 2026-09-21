@@ -159,8 +159,20 @@ Each of those is basically "copy the `listings` app pattern for a new model."
 
 ## Screenshots
 
+### Public Site
+
 | Home | Properties | Property Detail |
 |---|---|---|
 | ![Home](docs/home.png) | ![Properties](docs/properties.png) | ![Detail](docs/detail.png) |
+
+| FAQ | Our Pledge | 404 |
+|---|---|---|
+| ![FAQ](docs/faq.png) | ![Pledge](docs/pledge.png) | ![404](docs/404.png) |
+
+### Estate Operations (Django Admin)
+
+The `/admin/` panel is used by the family to manage properties and read customer inquiries. It has been themed to match the public site - no custom dashboard code needed.
+
+![Estate Operations](docs/admin.png)
 
 ---
