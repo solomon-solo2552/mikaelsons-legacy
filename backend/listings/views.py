@@ -32,6 +32,10 @@ class PropertyViewSet(viewsets.ReadOnlyModelViewSet):
                 location__icontains=search
             )
 
+        status_filter = self.request.query_params.get("status")
+        if status_filter:
+            queryset = queryset.filter(status=status_filter)
+
         return queryset
 
 

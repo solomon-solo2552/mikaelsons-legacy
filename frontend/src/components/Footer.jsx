@@ -26,6 +26,7 @@ import OrnamentDivider from "./OrnamentDivider";
 
 const NAV_LINKS = [
   { to: "/properties", label: "Properties" },
+  { to: "/archive", label: "Archive" },
   { to: "/about", label: "Our Story" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
