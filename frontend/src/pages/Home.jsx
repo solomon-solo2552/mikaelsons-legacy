@@ -57,7 +57,7 @@ export default function Home() {
         </div>
 
         {status === "loading" && (
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3].map((i) => (
               <PropertyCardSkeleton key={i} />
             ))}
@@ -87,7 +87,7 @@ export default function Home() {
           </p>
         )}
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}

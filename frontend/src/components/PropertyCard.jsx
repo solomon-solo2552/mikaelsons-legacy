@@ -23,7 +23,7 @@ export default function PropertyCard({ property }) {
       to={`/properties/${property.slug}`}
       className="group frame flex flex-col overflow-hidden transition-colors hover:border-gold/70"
     >
-      <div className="relative h-56 overflow-hidden border-b border-gold/25">
+      <div className="relative h-48 overflow-hidden border-b border-gold/25">
         <img
           src={imageSrc}
           alt={property.title}
