@@ -142,6 +142,24 @@ nothing breaks in the meantime.
 
 ---
 
+
+## Staff Roles
+
+The Django admin uses **Django's built-in group and permission system** to restrict what each staff member can see and do. No custom admin code needed.
+
+Two roles are configured:
+
+| Group | Accesss |
+|---|---|
+| **Listing Agents** | Add/edit Properties, view Inquiries (read-only) |
+| **Front Office** | View Inquiries only - no access to Properties, Users, or Groups |
+
+Staff users are created in `/admin/auth/user/` and assigned to a group. Django handles the rest: what appears in the  sidebar, what forms are editable, and what gets a 403 page.
+
+| Listing Agent view | Front Office view |
+|---|---|
+| ![Agent view](docs/admin-roles-agents.png) | ![Front Office view](docs/admin-roles-frontoffice.png) |
+
 ## 7. Where to go from here (once this makes sense)
 
 Once you're comfortable with this version, you already have a natural path
